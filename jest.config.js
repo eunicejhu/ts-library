@@ -6,7 +6,7 @@ module.exports = {
   ],
   moduleNameMapper: {
     "^@src/(.*)$": "<rootDir>/src/$1",
-    "^@test/(.*)$": "<rootDir>/__tests__/$1",
+    "^@tests/(.*)$": "<rootDir>/__tests__/$1",
   },
   transform: {
     "^.+\\.(ts|tsx)$": "ts-jest",
