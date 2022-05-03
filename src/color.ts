@@ -1,11 +1,6 @@
-import {
-  COLOR_REGEX,
-  RGB_REGEX,
-  SPACE_REGEX,
-  ALPHA_REGEX,
-} from "@src/constants";
+import { COLOR_REGEX, RGB_REGEX, SPACE_REGEX, ALPHA_REGEX } from "./constants";
 
-import { warn } from "@src/debug";
+import { warn } from "./debug";
 
 export function rgbColor(): string {
   const _3Digit = () => Math.round(Math.random() * 255);
