@@ -1,6 +1,6 @@
-# Utility library for personal use
+# Utility library, feel free to use it, if it makes your life easier!
 
-it has three sections currently:
+it has four sections currently:
 
 - color (rgbColors)
 - debug (warn, err, log)
