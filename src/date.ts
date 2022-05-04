@@ -21,9 +21,12 @@ export const getDaysOfMonth = (input: string): number => {
 
 export const getMonthOfCalendar = (
   month: number | string,
-  year: number | string
+  year: number | string,
+  twoDimension: boolean = false
 ): number[] => {
-  let sanitizedMonth;
+  let sanitizedMonth,
+    monthInOneDimension = [],
+    monthInTwoDimension = [];
   if (typeof month !== "number" && typeof month !== "string") {
     err("month is not a valid number or string", month);
     return [];
@@ -36,6 +39,36 @@ export const getMonthOfCalendar = (
     sanitizedMonth = parseInt(month);
   }
   sanitizedMonth = month;
+
   const days = getDaysOfMonth(`${year}-${sanitizedMonth + 1}-01`);
-  return new Array(days).fill(0).map((day, index) => index + 1);
+  monthInOneDimension = new Array(days).fill(0).map((day, index) => index + 1);
+
+  if (!twoDimension) {
+    return monthInOneDimension;
+  } else {
+    let tmp = monthInOneDimension.slice();
+    const SUNDAY = 0;
+    const SATURDAY = 6;
+    const DAYS_OF_WEEK = 7;
+
+    const firstDate = new Date(`${year}-${sanitizedMonth}-01`);
+    const lastDate = new Date(`${year}-${sanitizedMonth}-${days}`);
+    if (firstDate.getDay() !== SUNDAY) {
+      // pad 0 to start
+      tmp.unshift(...new Array(firstDate.getDay()).fill(0));
+    }
+    if (lastDate.getDay() !== SATURDAY) {
+      // pad 0 to end
+      tmp.push(...new Array(DAYS_OF_WEEK - lastDate.getDay() - 1).fill(0));
+    }
+    // split it into length / 7 groups
+    let delimeterIndex = 7;
+    while (delimeterIndex <= tmp.length) {
+      monthInTwoDimension.push(
+        tmp.slice(delimeterIndex - DAYS_OF_WEEK, delimeterIndex)
+      );
+      delimeterIndex += DAYS_OF_WEEK;
+    }
+    return monthInTwoDimension;
+  }
 };

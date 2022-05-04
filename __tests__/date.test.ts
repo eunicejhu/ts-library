@@ -70,4 +70,7 @@ describe("test getMonthOfCalendar", () => {
   it("output April of 2022", () => {
     log(getMonthOfCalendar(4, 2022));
   });
+  it.only("output April of 2022 in two dimension", () => {
+    log(getMonthOfCalendar(4, 2022, true));
+  });
 });

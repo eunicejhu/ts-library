@@ -1,6 +1,6 @@
 {
   "name": "@zuoqinhu/utils",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "author": "zuoqinhu",
   "description": "This is a utility library written in typescript",
   "main": "dist/index.js",
@@ -9,11 +9,12 @@
     "/dist"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
     "build:cjs": "npx tsc --project tsconfig.build.json ",
     "build:esm": "npx tsc --project tsconfig.build.json -m es2015 --outDir dist-esm ",
     "clean": "rm -rf dist/ dist-esm/",
-    "publish": "npm publish --access public"
+    "publish": "npm publish --access public",
+    "quickpublish": "npm run build:cjs && npm run publish"
   },
   "keywords": [
     "typescript",
