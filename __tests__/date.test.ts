@@ -2,6 +2,7 @@ import {
   isValidDateString,
   getDaysOfMonth,
   getMonthOfCalendar,
+  getMonthInTwoDimension,
 } from "@src/date";
 
 import { log } from "@src/debug";
@@ -70,7 +71,10 @@ describe("test getMonthOfCalendar", () => {
   it("output April of 2022", () => {
     log(getMonthOfCalendar(4, 2022));
   });
-  it.only("output April of 2022 in two dimension", () => {
-    log(getMonthOfCalendar(4, 2022, true));
+});
+
+describe("test getMonthInTwoDimension", () => {
+  it("output April of 2022 in two dimension", () => {
+    log(getMonthInTwoDimension(4, 2022));
   });
 });
