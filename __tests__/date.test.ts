@@ -1,4 +1,10 @@
-import { isValidDateString, getDaysOfMonth } from "@src/date";
+import {
+  isValidDateString,
+  getDaysOfMonth,
+  getMonthOfCalendar,
+} from "@src/date";
+
+import { log } from "@src/debug";
 
 describe("test isValidDateString", () => {
   it("2020-03-01 is valid dateString", () => {
@@ -57,5 +63,11 @@ describe("test getDaysOfMonth", () => {
   });
   it("2020-12-1 November has 30 days", () => {
     expect(getDaysOfMonth("2020-12-1")).toBe(30);
+  });
+});
+
+describe("test getMonthOfCalendar", () => {
+  it("output April of 2022", () => {
+    log(getMonthOfCalendar(4, 2022));
   });
 });

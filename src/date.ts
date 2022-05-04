@@ -18,3 +18,24 @@ export const getDaysOfMonth = (input: string): number => {
   date.setDate(date.getDate() - 1);
   return date.getDate();
 };
+
+export const getMonthOfCalendar = (
+  month: number | string,
+  year: number | string
+): number[] => {
+  let sanitizedMonth;
+  if (typeof month !== "number" && typeof month !== "string") {
+    err("month is not a valid number or string", month);
+    return [];
+  }
+  if (typeof year !== "number" && typeof year !== "string") {
+    err("year is not a valid number or string", year);
+    return [];
+  }
+  if (typeof month !== "number") {
+    sanitizedMonth = parseInt(month);
+  }
+  sanitizedMonth = month;
+  const days = getDaysOfMonth(`${year}-${sanitizedMonth + 1}-01`);
+  return new Array(days).fill(0).map((day, index) => index + 1);
+};
