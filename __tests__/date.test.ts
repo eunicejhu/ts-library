@@ -3,6 +3,7 @@ import {
   getDaysOfMonth,
   getMonthOfCalendar,
   getMonthInTwoDimension,
+  isToday,
 } from "@src/date";
 
 import { log } from "@src/debug";
@@ -76,5 +77,20 @@ describe("test getMonthOfCalendar", () => {
 describe("test getMonthInTwoDimension", () => {
   it("output April of 2022 in two dimension", () => {
     log(getMonthInTwoDimension(4, 2022));
+  });
+
+  it("output ", () => {
+    log(getMonthInTwoDimension(1, 1999));
+  });
+});
+
+describe("test isToday", () => {
+  it("now is today", () => {
+    const now = new Date();
+    expect(isToday(now.toISOString())).toBeTruthy();
+  });
+
+  it("1999-01-01 is not today ", () => {
+    expect(isToday("1999-01-01")).toBeFalsy();
   });
 });

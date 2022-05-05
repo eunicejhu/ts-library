@@ -50,15 +50,15 @@ const SATURDAY = 6;
 const DAYS_OF_WEEK = 7;
 
 export const getMonthInTwoDimension = (
-  month: number | string,
+  month: number,
   year: number | string
 ): number[][] => {
   let monthInTwoDimension: number[][] = [],
     sanitizedMonth: number,
     tmpMonth: number[];
 
-  if (typeof month !== "number" && typeof month !== "string") {
-    err("month is not a valid number or string", month);
+  if (typeof month !== "number" && month >= 1 && month <= 12) {
+    err("month is not a valid number", month);
     return [];
   }
   if (typeof year !== "number" && typeof year !== "string") {
@@ -93,4 +93,18 @@ export const getMonthInTwoDimension = (
     delimeterIndex += DAYS_OF_WEEK;
   }
   return monthInTwoDimension;
+};
+
+export const isToday = (date: string): boolean => {
+  if (typeof date !== "string") {
+    err("date is not valid string");
+    return false;
+  }
+  const now = new Date();
+  const dateObj = new Date(date);
+  return (
+    now.getFullYear() === dateObj.getFullYear() &&
+    now.getMonth() === dateObj.getMonth() &&
+    now.getDate() === dateObj.getDate()
+  );
 };
