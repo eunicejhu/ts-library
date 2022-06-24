@@ -7,5 +7,6 @@ it has four sections currently:
 - date (isValidDateString, getDaysOfMonth, getMonthInTwoDimension, isToday)
 - dataType (undefined, boolean, string, array, object)
 - string (merge)
+- lang (tranlsate)
 
 👉 [Published NPM packages](https://www.npmjs.com/package/@zuoqinhu/utils)
